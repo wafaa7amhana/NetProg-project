@@ -1,0 +1,17 @@
+import smtplib, ssl
+
+port = 465
+context = ssl.create_default_context()
+server = smtplib.SMTP_SSL('smtp.gmail.com', port, context=context)
+
+sender_email = 'nadaalouf1234@gmail.com'
+rec_email = 'nadaallouf29@gmail.com'
+subject = 'programming network'
+msg_body = 'welcome to our project'
+message = 'Subject: {}\n\n{}'.format(subject, msg_body)
+
+password = input('Type your password and press enter: ')
+server.login(sender_email, password)
+
+server.sendmail(sender_email, rec_email, message)
+server.quit()
